@@ -1,0 +1,74 @@
+@use 'variables';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100vh;
+  max-width: 98vw;
+}
+
+.layout-content {
+  display: flex;
+  height: 100%;
+  max-width: 98vw;
+}
+.layout-content main {
+  flex-grow: 1;
+  padding: 1em 1.5em;
+  max-width: calc(100vw - 170px);
+  background-color: variables.$dark-bg;
+}
+
+.layout-content main a {
+  color: lighten(variables.$light-font, 40%);
+}
+
+.sidebar a {
+  padding: 0.3em 0 0 0;
+}
+
+.navbar a:hover,
+.sidebar a:hover {
+  text-decoration: overline;
+  transform: scale(1.1);
+  transform-origin: 50% 50%;
+  color: lighten(variables.$light-font, 20%);
+}
+
+.navbar {
+  color: variables.$light-font;
+  background-color: variables.$dark-bg;
+  padding: 0.4em 0.7em 0.4em calc(170px + 2em);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  place-items: center;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.nav-user {
+  color: variables.$primary-font;
+  justify-self: end;
+  padding: 0 1em 0 1em;
+}
+
+.sidebar {
+  display: flex;
+  color: variables.$light-font;
+  flex-direction: column;
+
+  width: 100%;
+  // height: 100%;
+}
+.sidebar-wrapper {
+  display: flex;
+
+  min-width: 170px;
+
+  padding: 1em;
+}
