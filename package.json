@@ -8,10 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/mysql": "^2.15.21",
+    "dotenv": "^16.0.3",
+    "mysql": "^2.18.1",
     "next": "^12.3.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "sass": "^1.62.1"
+    "sass": "^1.62.1",
+    "typeorm": "^0.3.16"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
