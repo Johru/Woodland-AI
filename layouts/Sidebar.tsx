@@ -6,7 +6,7 @@ import { AISidebar, DefaultSidebar } from '../components';
 export default function Sidebar() {
   const router = useRouter();
   let SidebarComponent = DefaultSidebar;
-  if (router.pathname.includes('/ai')) {
+  if (router.pathname.includes('/AI')) {
     console.log('AI detected?');
     SidebarComponent = AISidebar;
   }
