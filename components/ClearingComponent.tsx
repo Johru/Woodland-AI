@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from '../styles/Board.module.scss';
 
 export default function ClearingComponent(props: any) {
   return (
-    <div>
+    <div className={styles[props.color]}>
       <hr />
       Color: {props.color}
       <br />
