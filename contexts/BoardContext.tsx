@@ -2,8 +2,8 @@ import React, { Dispatch, SetStateAction } from 'react';
 
 // Define and export a type for your board state here
 export type BoardState = {
-  strings: string[];
-  numbers: number[][];
+  boardColors: string[];
+  boardConnections: number[][];
 };
 
 const BoardContext = React.createContext<{
