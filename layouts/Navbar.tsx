@@ -15,8 +15,8 @@ export default function Navbar() {
         <Link href="/board">
           <a>Game Board</a>
         </Link>
-        <Link href="/sdfds">
-          <a>Placeholder 2</a>
+        <Link href="/switcher">
+          <a>Sidebar Switcher</a>
         </Link>
         <Link href="/sfdsfdsf">
           <a>Placeholder 3</a>
