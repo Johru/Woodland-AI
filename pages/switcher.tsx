@@ -1,11 +1,12 @@
 import React from 'react';
+import SidebarButton from '../components';
 
 export default function SwitcherPage() {
   return (
     <div>
-      <button>Switch to default (=blank) Sidebar</button>
+      <SidebarButton sidebarName="AiSidebar" />
       <br />
-      <button>Switch to AI Sidebar</button>
+      <SidebarButton sidebarName="DefaultSidebar" />
       <br />
       <button>Switch to GameSetupSidebar</button>
       <br />

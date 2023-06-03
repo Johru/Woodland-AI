@@ -1,3 +1,3 @@
 //Sidebars
-export { default as AISidebar } from './AISidebar';
-export { default as DefaultSidebar } from './DefaultSidebar';
+export { AISidebar } from './AISidebar';
+export { DefaultSidebar } from './DefaultSidebar';
