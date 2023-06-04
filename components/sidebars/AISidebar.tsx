@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../styles/Layout.module.scss';
+import styles from '../../styles/Layout.module.scss';
 
-export default function AISidebar() {
+export function AISidebar() {
   return (
     <div className={styles['sidebar']}>
       <h3>AI sidebar</h3>
