@@ -9,6 +9,7 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
 
   const toggleSidebar = (sidebarName: string) => {
     setSidebar(sidebarName);
+    console.log('toggleSidebar was triggered: ' + sidebarName);
   };
 
   return (

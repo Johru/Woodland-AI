@@ -13,6 +13,10 @@ export default function Sidebar() {
     Sidebars as { [key: string]: React.ComponentType<any> }
   )[sidebar];
 
+  console.log(Sidebars);
+  console.log('SidebarComponent:', SidebarComponent);
+  console.log('Current sidebar state: ' + sidebar);
+
   return (
     <div className={styles['sidebar-wrapper']}>
       {SidebarComponent ? <SidebarComponent /> : <DefaultSidebar />}
