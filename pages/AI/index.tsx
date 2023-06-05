@@ -11,6 +11,12 @@ export default function AIList() {
 
   return (
     <div>
+      <h1> Existing Bots </h1>
+      <p>
+        You can find existing bots here, including default ones. Create a new
+        bot from the sidebar.
+      </p>
+
       {profiles?.map((profile) => (
         <div key={profile.id}>{profile.name}</div>
       ))}

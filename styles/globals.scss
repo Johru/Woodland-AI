@@ -37,3 +37,13 @@ button {
   color: lighten(variables.$primary-font, 15%);
   padding: 0.4em 0.6em;
 }
+
+.formbox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 50%;
+}
+
+.formbox p {
+  margin: 0;
+}

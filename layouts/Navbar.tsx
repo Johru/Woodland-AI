@@ -18,8 +18,8 @@ export default function Navbar() {
         <Link href="/switcher">
           <a>Sidebar Switcher</a>
         </Link>
-        <Link href="/sfdsfdsf">
-          <a>Placeholder 3</a>
+        <Link href="/setup">
+          <a>New Game</a>
         </Link>
       </div>
       <p className={styles['nav-user']}>Welcome, Placeholder User</p>

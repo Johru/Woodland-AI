@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from '../../styles/Layout.module.scss';
-
+import Link from 'next/link';
 export function AISidebar() {
   return (
     <div className={styles['sidebar']}>
       <h3>AI sidebar</h3>
-      <a>Link 1</a>
+      <Link href="/AI/new">
+        <a>Create new Bot</a>
+      </Link>
       <a>Link 2</a>
       <a>Link 3</a>
       <hr />
