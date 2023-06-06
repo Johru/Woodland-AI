@@ -11,7 +11,11 @@ export class AIService {
         'Content-Type': 'application/json',
       },
     };
-    const response = await axios.post('YOUR_ENDPOINT', data, config);
+    const response = await axios.post(
+      'https://app.tabidoo.cloud/app/woodlandai/schema/ai_profiles',
+      data,
+      config
+    );
     return response.data;
   }
 }
