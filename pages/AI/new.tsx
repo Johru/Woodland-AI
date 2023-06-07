@@ -1,30 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { useSidebar } from '../../contexts/SidebarContext';
 
 export default function CreateNewAI() {
-  useSidebar().toggleSidebar('AISidebar');
+  const { toggleSidebar } = useSidebar();
+
+  useEffect(() => {
+    toggleSidebar('AISidebar');
+  }, [toggleSidebar]);
+
   const [formData, setFormData] = useState({
-    faction: '',
+    faction: 'cats',
     placeholderBoolean: false,
     placeholderNumber1: 0,
     placeholderNumber2: 0,
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const target = event.target as HTMLInputElement;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
+      [target.name]: value,
     });
   };
 
-  const handleSubmit = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await axios.post('YOUR_API_ENDPOINT', formData, {
-        headers: { Authorization: `Bearer ${process.env.DB_JWT}` },
-      });
+      const response = await axios.post(
+        'https://app.tabidoo.cloud/api/v2/apps/woodlandai/tables/ai_profiles/data',
+        formData,
+        {
+          headers: { Authorization: `Bearer ${process.env.DB_JWT}` },
+        }
+      );
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -33,34 +46,43 @@ export default function CreateNewAI() {
   return (
     <div>
       <h1> New bot </h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="formbox">
           <label htmlFor="faction">Faction</label>
-          <select name="faction" id="faction">
-            <option value="cats" selected>
-              Cats
-            </option>
+          <select
+            name="faction"
+            id="faction"
+            value={formData.faction}
+            onChange={handleChange}
+          >
+            <option value="cats">Cats</option>
+            <option value="birds">Birds</option>
           </select>
 
-          <label htmlFor="placeholder-boolean">Placeholder_boolean</label>
+          <label htmlFor="placeholderBoolean">Placeholder_boolean</label>
           <input
             type="checkbox"
-            name="placeholder-boolean"
-            value="placeholder-boolean"
+            name="placeholderBoolean"
+            checked={formData.placeholderBoolean}
+            onChange={handleChange}
           />
 
-          <label htmlFor="placeholder-number1">Placeholder_number1</label>
+          <label htmlFor="placeholderNumber1">Placeholder_number1</label>
           <input
             type="number"
-            id="placeholder-number1"
-            name="placeholder-number1"
+            id="placeholderNumber1"
+            name="placeholderNumber1"
+            value={formData.placeholderNumber1}
+            onChange={handleChange}
           />
 
-          <label htmlFor="placeholder-number1">Placeholder_number2</label>
+          <label htmlFor="placeholderNumber2">Placeholder_number2</label>
           <input
             type="number"
-            id="placeholder-number2"
-            name="placeholder-number2"
+            id="placeholderNumber2"
+            name="placeholderNumber2"
+            value={formData.placeholderNumber2}
+            onChange={handleChange}
           />
           <span></span>
           <button>Submit</button>
