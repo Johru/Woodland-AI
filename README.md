@@ -27,19 +27,19 @@ The application itself is an AI project for a board game. AI here means a set of
 
 ## Planned expert content
 
--A single AI faction has fully defined logic for all tactical states
--First default bot for this faction is created, users can create new ones and select them during game setup
--Bots now play the game independently, following a weighted decision tree
--Deck now has all card effects
--full advanced game setup is enabled
+- A single AI faction has fully defined logic for all tactical states
+- First default bot for this faction is created, users can create new ones and select them during game setup
+- Bots now play the game independently, following a weighted decision tree
+- Deck now has all card effects
+- full advanced game setup is enabled
 
 ## Possible full scope of the app
 
--All factions have a default bot and presets enabling bot creation by users
--New maps can be defined and selected during game setup
--Game stats are stored in a database, aggregates can be accessed by users
--Users can download a log file and "replay" a game from a log file.
--Bots can now play against only other bots a set number of times up to a 1000. Aggregated session stats are then stored for the user.
--Landmarks are implemented
--User authentication and authorization is added, new users can now actually create their accounts
--Optionally, if given permission by Leder Games, the whole project will be published and made available to the public. Otherwise, select few friends will be given access.
+- All factions have a default bot and presets enabling bot creation by users
+- New maps can be defined and selected during game setup
+- Game stats are stored in a database, aggregates can be accessed by users
+- Users can download a log file and "replay" a game from a log file.
+- Bots can now play against only other bots a set number of times up to a 1000. Aggregated session stats are then stored for the user.
+- Landmarks are implemented
+- User authentication and authorization is added, new users can now actually create their accounts
+- Optionally, if given permission by Leder Games, the whole project will be published and made available to the public. Otherwise, select few friends will be given access.
