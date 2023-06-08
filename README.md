@@ -6,25 +6,24 @@ The application itself is an AI project for a board game. AI here means a set of
 
 ### Tech Stack
 
--Frontend: ReactJS+NextS (+dotenv)
-
--Backend: NodeJS+Tabidoo API(due to remote development needs) - to be replaced by NestJS and TypeORM later.
+- Frontend: ReactJS+NextS (+dotenv)
+- Backend: NodeJS+Tabidoo API(due to remote development needs) - to be replaced by NestJS and TypeORM later.
 
 ## Planned initial features
 
--Layouts, Sidebars. Correct Sidebar can be selected for each page separately, changed and some Sidebars can be filled with a list of other components depending on state
--Only basic game board, no rules no logic. Extremely limited functions can be controlled from a few example Sidebar components.
--Placeholder AI creation form stores created fake bots in a database
--List of AI's for a hardcoded user can be retrieved from db, viewed, sorted, filtered and deleted.
+- Layouts, Sidebars. Correct Sidebar can be selected for each page separately, changed and some Sidebars can be filled with a list of other components depending on state
+- Only basic game board, no rules no logic. Extremely limited functions can be controlled from a few example Sidebar components.
+- Placeholder AI creation form stores created fake bots in a database
+- List of AI's for a hardcoded user can be retrieved from db, viewed, sorted, filtered and deleted.
 
 ## Planned advanced content
 
--Functions enforcing game actions like movement or combat are created
--A game can be setup, the board is populated with game pieces of a single faction
--All possible actions for this faction can be controlled by the user from the Sidebar, which is now connected to game logic and follows turn structure.
--Victory conditions are checked after every user action, game ends as soon as condition is met, player is ejected with a static message
--AI faction can play the game, but will have always the same hardcoded setup and turns
--Deck of cards only contains card colors which factions need to interact, no card effects
+- Functions enforcing game actions like movement or combat are created
+- A game can be setup, the board is populated with game pieces of a single faction
+- All possible actions for this faction can be controlled by the user from the Sidebar, which is now connected to game logic and follows turn structure.
+- Victory conditions are checked after every user action, game ends as soon as condition is met, player is ejected with a static message
+- AI faction can play the game, but will have always the same hardcoded setup and turns
+- Deck of cards only contains card colors which factions need to interact, no card effects
 
 ## Planned expert content
 
