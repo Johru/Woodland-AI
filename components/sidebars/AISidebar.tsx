@@ -8,6 +8,9 @@ export function AISidebar() {
       <Link href="/AI/new">
         <a>Create new Bot</a>
       </Link>
+      <Link href="/AI/test">
+        <a>Test API</a>
+      </Link>
       <a>Link 2</a>
       <a>Link 3</a>
       <hr />

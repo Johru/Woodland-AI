@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 import { useSidebar } from '../../contexts/SidebarContext';
 
@@ -9,12 +9,14 @@ export default function CreateNewAI() {
   useEffect(() => {
     toggleSidebar('AISidebar');
   }, [toggleSidebar]);
-
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     faction: 'cats',
-    placeholderBoolean: false,
-    placeholderNumber1: 0,
-    placeholderNumber2: 0,
+    leader: 'defaultLeader',
+    placeholder_boolean: false,
+    placeholder_number1: 0,
+    placeholder_number2: 0,
+    user_id: 1,
   });
 
   const handleChange = (
@@ -33,14 +35,49 @@ export default function CreateNewAI() {
     try {
       const response = await axios.post(
         'https://app.tabidoo.cloud/api/v2/apps/woodlandai/tables/ai_profiles/data',
-        formData,
         {
-          headers: { Authorization: `Bearer ${process.env.DB_JWT}` },
+          fields: {
+            ...formData,
+            placeholder_number1: Number(formData.placeholder_number1),
+            placeholder_number2: Number(formData.placeholder_number2),
+            placeholder_boolean: Boolean(formData.placeholder_boolean),
+            faction: String(formData.faction),
+            leader: String(formData.leader),
+            user_id: Number(formData.user_id),
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_DB_JWT}`,
+          },
         }
       );
+      setError('');
       console.log(response.data);
-    } catch (error) {
-      console.error(error);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        const serverError = error as AxiosError;
+        if (serverError && serverError.response) {
+          if (
+            typeof serverError.response.data === 'object' &&
+            serverError.response.data !== null
+          ) {
+            console.error(serverError.response.data);
+            setError(
+              (serverError.response.data as { message?: string }).message ||
+                'Unknown server error'
+            );
+          } else {
+            setError('Unknown server error');
+          }
+        }
+      } else if (error instanceof Error) {
+        console.error(error.message);
+        setError(error.message);
+      } else {
+        console.error(error);
+        setError('An unknown error occurred');
+      }
     }
   };
   return (
@@ -51,7 +88,6 @@ export default function CreateNewAI() {
           <label htmlFor="faction">Faction</label>
           <select
             name="faction"
-            id="faction"
             value={formData.faction}
             onChange={handleChange}
           >
@@ -59,35 +95,43 @@ export default function CreateNewAI() {
             <option value="birds">Birds</option>
           </select>
 
-          <label htmlFor="placeholderBoolean">Placeholder_boolean</label>
+          <label htmlFor="placeholder_boolean">Placeholder_boolean</label>
           <input
             type="checkbox"
-            name="placeholderBoolean"
-            checked={formData.placeholderBoolean}
+            name="placeholder_boolean"
+            checked={formData.placeholder_boolean}
             onChange={handleChange}
           />
 
-          <label htmlFor="placeholderNumber1">Placeholder_number1</label>
+          <label htmlFor="placeholder_number1">Placeholder_number1</label>
           <input
             type="number"
-            id="placeholderNumber1"
-            name="placeholderNumber1"
-            value={formData.placeholderNumber1}
+            name="placeholder_number1"
+            value={formData.placeholder_number1}
             onChange={handleChange}
           />
 
-          <label htmlFor="placeholderNumber2">Placeholder_number2</label>
+          <label htmlFor="placeholder_number2">Placeholder_number2</label>
           <input
             type="number"
-            id="placeholderNumber2"
-            name="placeholderNumber2"
-            value={formData.placeholderNumber2}
+            name="placeholder_number2"
+            value={formData.placeholder_number2}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="leader">Leader</label>
+          <input
+            type="text"
+            name="leader"
+            value={formData.leader}
             onChange={handleChange}
           />
           <span></span>
           <button>Submit</button>
         </div>
       </form>
+
+      <p>{error}</p>
     </div>
   );
 }
