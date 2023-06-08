@@ -9,9 +9,18 @@ export default function CreateNewAI() {
   useEffect(() => {
     toggleSidebar('AISidebar');
   }, [toggleSidebar]);
-  
+
   const [error, setError] = useState('');
-  const [formData, setFormData] = useState({
+  interface FormData {
+    faction: string;
+    leader: string;
+    placeholder_boolean: boolean;
+    placeholder_number1: number;
+    placeholder_number2: number;
+    user_id: number;
+  }
+
+  const [formData, setFormData] = useState<FormData>({
     faction: 'cats',
     leader: 'defaultLeader',
     placeholder_boolean: false,
@@ -41,10 +50,6 @@ export default function CreateNewAI() {
             ...formData,
             placeholder_number1: Number(formData.placeholder_number1),
             placeholder_number2: Number(formData.placeholder_number2),
-            placeholder_boolean: Boolean(formData.placeholder_boolean),
-            faction: String(formData.faction),
-            leader: String(formData.leader),
-            user_id: Number(formData.user_id),
           },
         },
         {

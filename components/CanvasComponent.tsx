@@ -1,5 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styles from '../styles/Board.module.scss';
+import {
+  clearCanvas,
+  drawCircle,
+  drawCircleOutline,
+  drawLine,
+} from '../utils/drawingUtils';
 
 type CanvasProps = {
   clearings: Array<{ color: string; index: number }>;
@@ -16,6 +22,8 @@ const CanvasComponent: React.FC<CanvasProps> = ({
   const cols = 4;
   const gap = 20; // define the gap between circles
   const sidebarWidth = 260;
+  const lineWidth = 10;
+  const pathColor = '#f3e5d8';
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [circleDiameter, setCircleDiameter] = useState(300);
 
@@ -63,10 +71,7 @@ const CanvasComponent: React.FC<CanvasProps> = ({
     const circleRadius = circleDiameter / 2;
 
     if (context) {
-      context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-
-      const lineWidth = 10;
-      const pathColor = '#f3e5d8';
+      clearCanvas(context, canvas.width, canvas.height);
 
       clearings.forEach((clearing, index) => {
         const row = Math.floor(index / cols);
@@ -82,11 +87,6 @@ const CanvasComponent: React.FC<CanvasProps> = ({
         context.stroke();
       });
 
-      // Draw connections
-      context.beginPath();
-      context.strokeStyle = pathColor;
-      context.lineWidth = 2;
-
       clearingPaths.forEach((path) => {
         const [from, to] = path;
 
@@ -99,26 +99,16 @@ const CanvasComponent: React.FC<CanvasProps> = ({
         const toCol = (to - 1) % cols;
         const toX = toCol * (circleDiameter + gap) + circleRadius;
         const toY = toRow * (circleDiameter + gap) + circleRadius;
-
-        context.moveTo(fromX, fromY);
-        context.lineTo(toX, toY);
-        context.lineWidth = lineWidth;
-        context.stroke();
+        drawLine(context, fromX, fromY, toX, toY, lineWidth, pathColor);
       });
 
       clearings.forEach((clearing, index) => {
         const row = Math.floor(index / cols);
         const col = index % cols;
-
         const x = col * (circleDiameter + gap) + circleRadius;
         const y = row * (circleDiameter + gap) + circleRadius;
-
-        context.beginPath();
         const effectiveRadius = Math.max(0, circleRadius - lineWidth / 2);
-        context.arc(x, y, effectiveRadius, 0, Math.PI * 2);
-        context.fillStyle = pathColor;
-        context.lineWidth = lineWidth;
-        context.fill();
+        drawCircle(context, x, y, effectiveRadius, pathColor);
       });
     }
   }, [clearings, dimensions, circleDiameter]);
