@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useFetchProfiles from '../../hooks/useFetchAIProfiles';
 import { useSidebar } from '../../contexts/SidebarContext';
 
 export default function AIList() {
   const [profiles, loading, error] = useFetchProfiles();
 
+  const { toggleSidebar } = useSidebar();
+  useEffect(() => {
+    toggleSidebar('AISidebar');
+  }, [toggleSidebar]);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading profiles</div>;
-  useSidebar().toggleSidebar('AISidebar');
 
   return (
     <div>

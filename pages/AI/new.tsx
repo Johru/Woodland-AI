@@ -9,6 +9,7 @@ export default function CreateNewAI() {
   useEffect(() => {
     toggleSidebar('AISidebar');
   }, [toggleSidebar]);
+  
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     faction: 'cats',

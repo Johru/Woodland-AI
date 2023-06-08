@@ -1,11 +1,15 @@
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import Link from 'next/link';
+import { useSidebar } from '../../contexts/SidebarContext';
 
 const ProfilePage = () => {
   const router = useRouter();
   const { id } = router.query;
-
-  // Fetch profile data here based on the ID, or get it from your state management solution
+  const { toggleSidebar } = useSidebar();
+  useEffect(() => {
+    toggleSidebar('AISidebar');
+  }, [toggleSidebar]);
 
   return (
     <div>

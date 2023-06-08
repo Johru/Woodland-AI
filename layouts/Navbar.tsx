@@ -7,16 +7,16 @@ export default function Navbar() {
     <div className={styles.navbar}>
       <div className={styles['nav-links']}>
         <Link href="/">
-          <a>Homepage</a>
+          <a>Home</a>
         </Link>
         <Link href="/AI">
-          <a>AI Management</a>
+          <a>Bots</a>
         </Link>
         <Link href="/board">
           <a>Game Board</a>
         </Link>
         <Link href="/switcher">
-          <a>Sidebar Switcher</a>
+          <a>Sidebars</a>
         </Link>
         <Link href="/setup">
           <a>New Game</a>

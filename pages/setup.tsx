@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
-import Board from '../components/Board';
 import { useSidebar } from '../contexts/SidebarContext';
 
-export default function BoardPage() {
+export default function GameSetupPage() {
   const { toggleSidebar } = useSidebar();
   useEffect(() => {
-    toggleSidebar('TurnControlSidebar');
+    toggleSidebar('DefaultSidebar');
   }, [toggleSidebar]);
-  return <Board />;
+  return (
+    <div>
+      New Game setup goes here
+      <br />
+    </div>
+  );
 }

@@ -4,6 +4,10 @@ Simple fullstack study project that might grow to a larger app over time. The pr
 
 The application itself is an AI project for a board game. AI here means a set of fixed logic in a weighted decision tree, no deep learning involved. Users will be able to create AI opponents to play against from pre-determined list of possible settings. A list of a user's created bots can be viewed in their profile. Later, users will be able to play a game in a simplified UI. Game rules will be enforced, players can play solo or against any bots they created. After each game, basic statisics will be stored in the database, the user will have the option to download a log file containg detailed data about each turn of the game. All users will have access to the aggregated global statistics.
 
+### Tech Stack
+
+-Frontend: ReactJS+NextS (+dotenv)
+-Backend: NodeJS+Tabidoo API(due to remote development needs) - to be replaced by NestJS and TypeORM later.
 
 ## Planned initial features
 
@@ -34,7 +38,7 @@ The application itself is an AI project for a board game. AI here means a set of
 -All factions have a default bot and presets enabling bot creation by users
 -New maps can be defined and selected during game setup
 -Game stats are stored in a database, aggregates can be accessed by users
--Users can download a log file and "replay" a game from a log file. 
+-Users can download a log file and "replay" a game from a log file.
 -Bots can now play against only other bots a set number of times up to a 1000. Aggregated session stats are then stored for the user.
 -Landmarks are implemented
 -User authentication and authorization is added, new users can now actually create their accounts

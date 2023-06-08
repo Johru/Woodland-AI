@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SidebarButton } from '../components';
+import { useSidebar } from '../contexts/SidebarContext';
 
 export default function SwitcherPage() {
+  const { toggleSidebar } = useSidebar();
+  useEffect(() => {
+    toggleSidebar('DefaultSidebar');
+  }, [toggleSidebar]);
   return (
     <div>
       <SidebarButton sidebarName="AISidebar">

@@ -1,11 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import styles from '../styles/Home.module.scss';
 import { useSidebar } from '../contexts/SidebarContext';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
-  useSidebar().toggleSidebar('DefaultSidebar');
+  const { toggleSidebar } = useSidebar();
+  useEffect(() => {
+    toggleSidebar('DefaultSidebar');
+  }, [toggleSidebar]);
   return (
     <div>
       <Head>
