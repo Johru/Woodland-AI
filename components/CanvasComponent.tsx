@@ -6,13 +6,16 @@ type CanvasProps = {
   clearingPaths: Array<[number, number]>;
 };
 
-const CanvasComponent: React.FC<CanvasProps> = ({ clearings }) => {
+const CanvasComponent: React.FC<CanvasProps> = ({
+  clearings,
+  clearingPaths,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const rows = 3;
   const cols = 4;
   const gap = 20; // define the gap between circles
-  const sidebarWidth = 260; // adjust this value to your sidebar's width
+  const sidebarWidth = 260;
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [circleDiameter, setCircleDiameter] = useState(300);
 
@@ -35,7 +38,6 @@ const CanvasComponent: React.FC<CanvasProps> = ({ clearings }) => {
         canvasRef.current.height = totalCanvasHeight;
         setDimensions({ width: totalCanvasWidth, height: totalCanvasHeight });
       }
-
       setCircleDiameter(newCircleDiameter);
     }
 
@@ -62,26 +64,18 @@ const CanvasComponent: React.FC<CanvasProps> = ({ clearings }) => {
 
     if (context) {
       context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-      const clearingPaths = [
-        [1, 2],
-        [1, 5],
-        [5, 6],
-        [7, 8],
-        [11, 8],
-      ];
+
       const lineWidth = 10;
       const pathColor = '#f3e5d8';
 
       clearings.forEach((clearing, index) => {
         const row = Math.floor(index / cols);
         const col = index % cols;
-
-        // added padding to the position calculations
         const x = col * (circleDiameter + gap) + circleRadius;
         const y = row * (circleDiameter + gap) + circleRadius;
+        const effectiveRadius = Math.max(0, circleRadius - lineWidth / 2);
 
         context.beginPath();
-        const effectiveRadius = Math.max(0, circleRadius - lineWidth / 2);
         context.arc(x, y, effectiveRadius, 0, Math.PI * 2);
         context.strokeStyle = clearing.color;
         context.lineWidth = lineWidth;
@@ -90,7 +84,7 @@ const CanvasComponent: React.FC<CanvasProps> = ({ clearings }) => {
 
       // Draw connections
       context.beginPath();
-      context.strokeStyle = pathColor; // white color for connections
+      context.strokeStyle = pathColor;
       context.lineWidth = 2;
 
       clearingPaths.forEach((path) => {

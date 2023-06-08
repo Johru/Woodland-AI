@@ -6,8 +6,8 @@ The application itself is an AI project for a board game. AI here means a set of
 
 ### Tech Stack
 
--Frontend: ReactJS+NextS (+dotenv)
--Backend: NodeJS+Tabidoo API(due to remote development needs) - to be replaced by NestJS and TypeORM later.
+*Frontend: ReactJS+NextS (+dotenv)
+*Backend: NodeJS+Tabidoo API(due to remote development needs) - to be replaced by NestJS and TypeORM later.
 
 ## Planned initial features
 

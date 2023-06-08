@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Clearing } from '../models';
-import ClearingComponent from './ClearingComponent';
 import CanvasComponent from './CanvasComponent';
 import styles from '../styles/Board.module.scss';
 
 const Board = () => {
   const [clearings, setClearings] = useState<Clearing[]>([]);
+
+  const clearingPaths: Array<[number, number]> = [
+    [1, 2],
+    [1, 5],
+    [5, 6],
+    [7, 8],
+    [11, 8],
+  ];
 
   const generateNewClearings = () => {
     const colors = ['red', 'orange', 'yellow'];
@@ -32,6 +39,7 @@ const Board = () => {
   return (
     <div className={styles['canvas']}>
       <CanvasComponent
+        clearingPaths={clearingPaths}
         clearings={clearings.map((clearing, index) => ({
           color: clearing.color,
           index,
@@ -42,21 +50,6 @@ const Board = () => {
       </button>
     </div>
   );
-
-  //   return (
-  //     <div>
-  //       <button onClick={() => generateNewClearings()}>
-  //         Generate new clearings
-  //       </button>
-  //       {clearings.map((clearing, index) => (
-  //         <ClearingComponent
-  //           key={index}
-  //           index={index + 1}
-  //           color={clearing.color}
-  //         />
-  //       ))}
-  //     </div>
-  //   );
 };
 
 export default Board;

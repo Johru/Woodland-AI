@@ -12,14 +12,14 @@ export default function Navbar() {
         <Link href="/AI">
           <a>Bots</a>
         </Link>
+        <Link href="/setup">
+          <a>New Game</a>
+        </Link>
         <Link href="/board">
           <a>Game Board</a>
         </Link>
         <Link href="/switcher">
           <a>Sidebars</a>
-        </Link>
-        <Link href="/setup">
-          <a>New Game</a>
         </Link>
       </div>
       <p className={styles['nav-user']}>Welcome, Placeholder User</p>
