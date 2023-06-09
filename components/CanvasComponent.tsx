@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import styles from '../styles/Board.module.scss';
 import {
   clearCanvas,
@@ -6,6 +6,7 @@ import {
   drawCircleOutline,
   drawLine,
 } from '../utils/drawingUtils';
+import { CanvasContext } from '../contexts';
 
 type CanvasProps = {
   clearings: Array<{ color: string; index: number }>;
@@ -16,8 +17,15 @@ const CanvasComponent: React.FC<CanvasProps> = ({
   clearings,
   clearingPaths,
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+  const canvasContext = useContext(CanvasContext);
+
+  if (!canvasContext) {
+    throw new Error('CanvasComponent must be used within a CanvasProvider');
+  }
+
+  const { canvasRef, context } = canvasContext;
+ 
   const rows = 3;
   const cols = 4;
   const gap = 20; // define the gap between circles
@@ -67,7 +75,7 @@ const CanvasComponent: React.FC<CanvasProps> = ({
       return;
     }
     const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
+
     const circleRadius = circleDiameter / 2;
 
     if (context) {
