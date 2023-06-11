@@ -21,8 +21,11 @@ export const BoardContext = React.createContext<{
 });
 
 export const BoardProvider: React.FC = ({ children }) => {
-  const [boardState, setBoardState] = useState<BoardState | undefined>(
-    
+  const [boardState, setBoardState] = useState<BoardState|undefined>(
+    {boardColors: [''],
+    boardConnections: [],
+    setupSettings:{map: 'Winter'}
+  }
   );
 
   return (

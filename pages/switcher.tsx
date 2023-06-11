@@ -6,7 +6,7 @@ export default function SwitcherPage() {
   const { toggleSidebar } = useSidebar();
   useEffect(() => {
     toggleSidebar('DefaultSidebar');
-  }, [toggleSidebar]);
+  }, []);
   return (
     <div>
       <SidebarButton sidebarName="AISidebar">

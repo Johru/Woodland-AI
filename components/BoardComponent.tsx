@@ -54,7 +54,7 @@ console.log(setupSettings)
   }, []);
   
  
-  return (<div>Selected Map: {mapSelected}
+  return (
     <div className={styles['canvas']}>
       
       <CanvasComponent
@@ -63,8 +63,9 @@ console.log(setupSettings)
         clearings={clearings}
         clearingGridPositions={clearingGridPositions}
       />
-  
+    <div>Selected Map: {mapSelected}
     </div>
+  
     </div>
   );
 };

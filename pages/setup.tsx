@@ -41,6 +41,7 @@ export default function GameSetupPage() {
       ...boardState,
 setupSettings: formData
     })
+    console.log('Setup:')
     console.log (boardState)
   }
 

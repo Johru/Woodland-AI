@@ -34,7 +34,7 @@ const canvasRef = useRef<HTMLCanvasElement>(null);
 
  
   const cols = 4;
-  const gap = 20; // define the gap between circles
+  const gap = 20;
   const sidebarWidth = 260;
   const lineWidth = 10;
   const pathColor = '#f3e5d8';
