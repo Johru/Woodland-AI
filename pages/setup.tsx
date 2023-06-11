@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSidebar } from '../contexts/SidebarContext';
+import { useRouter } from 'next/router'
+import { useContext } from 'react';
+import {BoardContext} from '../contexts';
 
 export default function GameSetupPage() {
   const { toggleSidebar } = useSidebar();
+  const router = useRouter();
+  const { boardState, setBoardState } = useContext(BoardContext);
   useEffect(() => {
     toggleSidebar('DefaultSidebar');
   }, [toggleSidebar]);
@@ -31,6 +36,15 @@ export default function GameSetupPage() {
   const startNewGame = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
+    if (setBoardState && boardState) {
+    setBoardState({
+      ...boardState,
+setupSettings: formData
+    })
+    console.log (boardState)
+  }
+
+    router.push('/board')
   };
   return (
     <div>
@@ -39,8 +53,8 @@ export default function GameSetupPage() {
         <select name="map" onChange={handleChange} value={formData.map}>
           <option>Autumn</option>
           <option>Winter</option>
-          <option>Lake</option>
-          <option>Mountain</option>
+          <option disabled>Lake</option>
+          <option disabled>Mountain</option>
         </select>
 
         <label htmlFor="setupType">Type of setup</label>

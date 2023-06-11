@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Board from '../components/Board';
+import {BoardComponent} from '../components';
 import { useSidebar } from '../contexts/SidebarContext';
 
 export default function BoardPage() {
@@ -7,5 +7,5 @@ export default function BoardPage() {
   useEffect(() => {
     toggleSidebar('TurnControlSidebar');
   }, [toggleSidebar]);
-  return <Board />;
+  return <BoardComponent />;
 }

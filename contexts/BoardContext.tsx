@@ -4,9 +4,15 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 export type BoardState = {
   boardColors: string[];
   boardConnections: number[][];
+  setupSettings:Setup;
 };
 
-const BoardContext = React.createContext<{
+interface Setup {
+  map: string
+  [key: string]: any;
+}
+
+export const BoardContext = React.createContext<{
   boardState: BoardState | undefined;
   setBoardState: Dispatch<SetStateAction<BoardState | undefined>> | undefined;
 }>({
@@ -16,7 +22,7 @@ const BoardContext = React.createContext<{
 
 export const BoardProvider: React.FC = ({ children }) => {
   const [boardState, setBoardState] = useState<BoardState | undefined>(
-    undefined
+    
   );
 
   return (

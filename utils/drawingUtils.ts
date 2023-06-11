@@ -6,9 +6,9 @@ export function drawCircleOutline(
   color: string,
   lineWidth: number
 ) {
+  context.strokeStyle = color;
   context.beginPath();
   context.arc(x, y, effectiveRadius, 0, Math.PI * 2);
-  context.strokeStyle = color;
   context.lineWidth = lineWidth;
   context.stroke();
 }
@@ -35,10 +35,11 @@ export function drawLine(
   lineWidth: number,
   color: string
 ) {
-  context.moveTo(fromX, fromY);
+  context.beginPath();
   context.strokeStyle = color;
-  context.lineTo(toX, toY);
   context.lineWidth = lineWidth;
+  context.moveTo(fromX, fromY);
+  context.lineTo(toX, toY);
   context.stroke();
 }
 

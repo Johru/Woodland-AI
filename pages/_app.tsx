@@ -1,12 +1,12 @@
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 import Layout from '../layouts/Layout';
-import { SidebarProvider, BoardProvider, FactionProvider, CanvasProvider } from '../contexts';
+import { SidebarProvider, BoardProvider, FactionProvider  } from '../contexts';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SidebarProvider>
-   <CanvasProvider>
+  
     <FactionProvider>
     <BoardProvider>
       <Layout>
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Layout>
     </BoardProvider>
    </FactionProvider>
-  </CanvasProvider>
+
     </SidebarProvider>
   );
 }
