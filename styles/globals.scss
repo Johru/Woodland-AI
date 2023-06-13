@@ -38,6 +38,11 @@ button {
   padding: 0.4em 0.6em;
 }
 
+button:hover{
+  background-color: lighten(variables.$middle-bg, 20%);
+  color: lighten(variables.$light-font, 15%);
+}
+
 .formbox {
   display: grid;
   grid-template-columns: 1fr 1fr;
