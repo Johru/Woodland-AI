@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios, { AxiosError } from 'axios';
+import styles from '../../styles/Form.module.scss'
 
 import { useSidebar } from '../../contexts/SidebarContext';
 
@@ -23,7 +24,7 @@ export default function CreateNewAI() {
   const [formData, setFormData] = useState<FormData>({
     faction: 'cats',
     leader: 'defaultLeader',
-    placeholder_boolean: false,
+    placeholder_boolean: true,
     placeholder_number1: 0,
     placeholder_number2: 0,
     user_id: 1,
@@ -33,7 +34,10 @@ export default function CreateNewAI() {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const target = event.target as HTMLInputElement;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value =
+      target.type === 'checkbox'
+        ? target.checked
+        : target.value;
     setFormData({
       ...formData,
       [target.name]: value,
@@ -59,7 +63,7 @@ export default function CreateNewAI() {
         }
       );
       setError('');
-      console.log(response.data);
+      console.log(response.data.data.fields);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         const serverError = error as AxiosError;
@@ -101,13 +105,18 @@ export default function CreateNewAI() {
             <option value="birds">Birds</option>
           </select>
 
-          <label htmlFor="placeholder_boolean">Placeholder_boolean</label>
-          <input
-            type="checkbox"
-            name="placeholder_boolean"
-            checked={formData.placeholder_boolean}
-            onChange={handleChange}
-          />
+          <label htmlFor="placeholder_boolean"> Placeholder_boolean </label>
+
+          <div className={styles["css-checkbox-wrapper"]}>
+		    
+            <input  type="checkbox"
+              name="placeholder_boolean"
+              className={styles["css-checkbox"]}
+              checked={formData.placeholder_boolean}
+              onChange={handleChange}
+            />
+              <label htmlFor="placeholder_boolean"></label>
+          </div>
 
           <label htmlFor="placeholder_number1">Placeholder_number1</label>
           <input
@@ -133,6 +142,8 @@ export default function CreateNewAI() {
             onChange={handleChange}
           />
           <span></span>
+          <br/>
+          <p></p>
           <button>Submit</button>
         </div>
       </form>

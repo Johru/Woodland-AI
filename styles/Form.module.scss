@@ -1,0 +1,68 @@
+@import 'variables';
+
+
+.input-container{
+  background-color: blue;
+  display: grid;}
+.input-container input[type="checkbox"] {
+  background-color: darken($primary-font,70%);}
+
+
+  .css-checkbox { 
+    position: absolute; 
+    opacity: 0; /* Instead of making it clipped and hidden, reduce its opacity to 0 */
+    height: 100%; /* Let it take full height of its parent */
+    width: 100%; /* Let it take full width of its parent */
+    cursor: pointer; /* Optional: change cursor on hover */
+    z-index: 1;
+  }
+  
+  .css-checkbox-wrapper { 
+    display: grid; 
+    place-items: center; 
+    position: relative; 
+    width: 2em; 
+    height: 2em}
+  
+  .css-checkbox + label { 
+    position: relative; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    height: 100%; 
+    width: 100%; 
+    color: rgb(97, 97, 97); }
+  
+  .css-checkbox + label::before { 
+    content: " "; 
+    display: inline-block; 
+    vertical-align: middle; 
+    margin-right: 3px; 
+    width: 100%; 
+    height: 100%; 
+    background-color: lighten($middle-bg,8%); 
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: lighten($middle-bg,8%); 
+    border-radius: 2px; 
+    box-shadow: none; }
+  
+  .css-checkbox:checked + label::after { 
+    content: " "; 
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;base64,IDxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+DQogICAgPHBhdGggZmlsbD0iI0Y4RTJCOCIgZD0iTTE3My44OTggNDM5LjQwNGwtMTY2LjQtMTY2LjRjLTkuOTk3LTkuOTk3LTkuOTk3LTI2LjIwNiAwLTM2LjIwNGwzNi4yMDMtMzYuMjA0YzkuOTk3LTkuOTk4IDI2LjIwNy05Ljk5OCAzNi4yMDQgMEwxOTIgMzEyLjY5IDQzMi4wOTUgNzIuNTk2YzkuOTk3LTkuOTk3IDI2LjIwNy05Ljk5NyAzNi4yMDQgMGwzNi4yMDMgMzYuMjA0YzkuOTk3IDkuOTk3IDkuOTk3IDI2LjIwNiAwIDM2LjIwNGwtMjk0LjQgMjk0LjQwMWMtOS45OTggOS45OTctMjYuMjA3IDkuOTk3LTM2LjIwNC0uMDAxeiIvPg0KPC9zdmc+"); 
+  
+    background-repeat: no-repeat; 
+    // background-size: 10px 10px; 
+    background-position: center center; 
+    position: absolute; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 0px; 
+    left: 0px; 
+    top: 0px; 
+    text-align: center; 
+    background-color: transparent; 
+    height: 100%; 
+    width: 100%; }
